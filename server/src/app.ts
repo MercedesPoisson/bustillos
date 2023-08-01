@@ -1,9 +1,9 @@
 import express, { Express, Request, Response, NextFunction } from "express";
 import morgan from "morgan";
-import cors from "cors";
 import bodyParser from "body-parser";
 import multer from "multer";
 import sequelize from "./db";
+import router from "./routes";
 
 const { Rents, Users, Apartments, Services } = sequelize.models
 
@@ -36,6 +36,8 @@ server.use((req, res, next) => {
 const upload = multer({ storage: storage })
 
 server.use(upload.any())
+
+server.use("/", router)
 
 server.use((err: CustomError, req: Request, res: Response, next: NextFunction): void => {
     const status: number | undefined = err.status || 500;
