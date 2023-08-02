@@ -6,7 +6,6 @@ import fs from "fs";
 import { imageUpdate } from "../../utils/cloudinary";
 
 const createAppHandler = async(req: Request, res: Response) => {
-    console.log('Handling createAppHandler...');
     const apartmentsArray: string[] = [
         "id_apartment",
         "ap_number",
@@ -35,10 +34,8 @@ const createAppHandler = async(req: Request, res: Response) => {
         "private_access",
     ]
     const result: string|boolean = formBodyCheck(apartmentsArray, req.body)
-    console.log('formBodyCheck result:', result);
     const newApp = req.body as ApartmentsAttributes;
-    console.log('newApp:', newApp);
-    
+        
     const multerArray = req.files as Express.Multer.File[];
     let pathsArray: string[] = [];
     if(multerArray?.length) {

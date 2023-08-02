@@ -4,14 +4,27 @@ import { RentsAttributes } from './interfaces';
 interface RentsInstance extends Model<RentsAttributes>, RentsAttributes {}
 
 const Rent = (sequelize: Sequelize) => {
-    sequelize.define<RentsInstance>("Rents", {
+    return sequelize.define<RentsInstance>("Rents", {
         id_rent: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        id_user: {
+        
+        name: {
+            type:DataTypes.STRING,
+            allowNull: false,
+        },
+        surname: {
+            type:DataTypes.STRING,
+            allowNull: false,
+        },
+        phone: {
+            type:DataTypes.STRING,
+            allowNull: false,
+        },
+        mail: {
             type:DataTypes.STRING,
             allowNull: false,
         },

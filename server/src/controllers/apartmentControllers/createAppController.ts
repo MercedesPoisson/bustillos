@@ -10,12 +10,9 @@ const createAppController = async (
   newApp: Partial<Apartment_Services>
 ): Promise<ApartmentsAttributes> => {
   try {
-    console.log('Inside createAppController...');
     const services: string[] | undefined = newApp.services;
-    console.log('services:', services);
     const app: any = await Apartments.create(newApp);
-    console.log('Created app:', app);
-
+    
     if (services && services.length > 0) {
       const servicesFromDb = await Services.findAll({
         where: { name: services },

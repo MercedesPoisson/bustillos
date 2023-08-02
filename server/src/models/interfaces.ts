@@ -34,24 +34,39 @@ export interface ServicesAttributes {
 
 export interface RentsAttributes {
     id_rent: number
-    id_user: number
+    // id_user?: number
+    name: string
+    surname: string
+    phone: string
+    mail: string
     id_apartment: number
     start_date: Date
     end_date: Date
     guests_number: number
     amount: number
+    // pre_viaje: boolean
+    // total_amount: number
+    // senia: boolean
+    // senia_amount: number
+    // saldo: number    
     payment_status: boolean
     payment_date?: Date
     review_status: boolean
     creation_date: Date
     is_active: boolean
     source: string
+    // bed_type
+    // room_one: string
+    // room_two: string
+    // room_three: string
+    // estar: string
 }
 
 export interface UserAttributes {
     id_user: string
     name?: string
     surname?: string
+    // documento: string
     email: string
     address?: string
     number?: number

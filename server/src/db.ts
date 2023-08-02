@@ -11,7 +11,7 @@ const sequelize: any = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_
     native: false, 
   });
   
-  User(sequelize);
+User(sequelize);
 Apartment(sequelize);
 Rent(sequelize);
 Service(sequelize);
@@ -21,8 +21,8 @@ const { Users, Apartments, Rents, Services } = sequelize.models;
 Users.hasMany(Rents, { foreignKey: "id_user" });
 Services.belongsToMany(Apartments, { through: "Apartments_Services" });
 Apartments.belongsToMany(Services, { through: "Apartments_Services" });
-Apartments.hasMany(Rents, { foreignKey: 'id_apartment' }); // Cambiar 'id_apartments' por 'id_apartment'
+Apartments.hasMany(Rents, { foreignKey: 'id_apartment' }); 
 Rents.belongsTo(Users, { foreignKey: 'id_user' });
-Rents.belongsTo(Apartments, { foreignKey: 'id_apartment' }); // Cambiar 'id_apartments' por 'id_apartment'
+Rents.belongsTo(Apartments, { foreignKey: 'id_apartment' }); 
 
 export default sequelize;
