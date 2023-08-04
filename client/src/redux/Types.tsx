@@ -1,4 +1,4 @@
-export interface ApartmentsAttributes {
+export interface Apartments {
     id_apartment: number
     // id_price: number
     ap_number: number
@@ -27,13 +27,23 @@ export interface ApartmentsAttributes {
     private_access: boolean
 }
 
-export interface ServicesAttributes {
+export interface Services {
     id: number
     name: string
     icon: string
 }
 
-export interface RentsAttributes {
+export interface State {
+    services: Services[],
+    apartments: Apartments[],
+    detail: Partial<Apartments>
+    user: Partial<Users>
+    favorites: Apartments[]
+    rents: Rents[],
+    price: Price[],
+}
+
+export interface Rents {
     id_rent: number
     id_user?: number
     name: string
@@ -66,7 +76,7 @@ export interface RentsAttributes {
     room_estar: string
 }
 
-export interface UserAttributes {
+export interface Users {
     id_user: string
     name?: string
     surname?: string
@@ -80,7 +90,7 @@ export interface UserAttributes {
     is_active: boolean
 }
 
-export interface PriceAttributes {
+export interface Price {
     id_price: number
     id_apartment: number
     key_word: string
@@ -88,4 +98,9 @@ export interface PriceAttributes {
     price_per_night: number
     start_date: Date
     end_date: Date
+}
+
+export interface Action {
+    type: string;
+    payload: any;
 }

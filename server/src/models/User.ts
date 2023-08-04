@@ -18,6 +18,10 @@ const User = (sequelize: Sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
+        documento: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         email: {
             type: DataTypes.STRING,
             allowNull: true
