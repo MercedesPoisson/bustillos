@@ -12,6 +12,7 @@ const FormMany: React.FC<ManyProps> = ({ formData, handleInputChange }) => {
         <div>
             <input
                 type="number"
+                name="price_per_night"
                 placeholder="Precio Por Noche"
                 value={formData.price_per_night}
                 onChange={handleInputChange}
@@ -20,6 +21,7 @@ const FormMany: React.FC<ManyProps> = ({ formData, handleInputChange }) => {
 
               <input
                 type="number"
+                name="max_guests"
                 placeholder="Máximo de Húespedes"
                 value={formData.max_guests}
                 onChange={handleInputChange}
@@ -28,6 +30,7 @@ const FormMany: React.FC<ManyProps> = ({ formData, handleInputChange }) => {
 
               <input
                 type="number"
+                name="min_nights"
                 placeholder="Mínimo de noches"
                 value={formData.min_nights}
                 onChange={handleInputChange}

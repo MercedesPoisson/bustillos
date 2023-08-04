@@ -18,8 +18,8 @@ const FormBoolean: React.FC<FormBooleanProps> = ({
 }) => {
   return (
     <div>
-      <div className="relative mt-2">
-        <h2 className=" px-2 mb-2 text-sm font-semibold">Activo</h2>
+      <div className="relative mt-5 font-Poppins">
+        <h2 className=" px-2 mb-1 text-sm font-semibold">¿Está Activo?</h2>
         <select
           name="is_active"
           value={formData.is_active.toString()}
@@ -33,7 +33,7 @@ const FormBoolean: React.FC<FormBooleanProps> = ({
       </div>
 
       <div className=" relative mt-2">
-        <h2 className=" px-2 mb-2 text-sm font-semibold">Permite mascotas</h2>
+        <h2 className=" px-2 mb-1 text-sm font-semibold">Permite mascotas</h2>
 
         <select
           name="allow_pets"
@@ -48,7 +48,7 @@ const FormBoolean: React.FC<FormBooleanProps> = ({
       </div>
 
       <div className="relative mt-2">
-        <h2 className=" px-2 mb-2 text-sm font-semibold">Accesibilidad</h2>
+        <h2 className=" px-2 mb-1 text-sm font-semibold">Accesibilidad</h2>
         <select
           name="accessibility"
           value={formData.accessibility.toString()}
@@ -62,7 +62,7 @@ const FormBoolean: React.FC<FormBooleanProps> = ({
       </div>
 
       <div className="relative mt-2">
-        <h2 className=" px-2 mb-2 text-sm font-semibold">Acceso Privado</h2>
+        <h2 className=" px-2 mb-1 text-sm font-semibold">Acceso Privado</h2>
         <select
           name="private_access"
           value={formData.private_access.toString()}
@@ -76,7 +76,7 @@ const FormBoolean: React.FC<FormBooleanProps> = ({
       </div>
 
       <div className="relative mt-2">
-        <h2 className=" px-2 mb-2 text-sm font-semibold">
+        <h2 className=" px-2 mb-1 text-sm font-semibold">
           Descuentos semanales
         </h2>
         <select
@@ -92,7 +92,7 @@ const FormBoolean: React.FC<FormBooleanProps> = ({
       </div>
 
       <div className="relative mt-2">
-        <h2 className=" px-2 mb-2 text-sm font-semibold">
+        <h2 className=" px-2 mb-1 text-sm font-semibold">
           Descuentos mensuales
         </h2>
         <select

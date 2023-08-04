@@ -13,6 +13,7 @@ const FormCantidades: React.FC<FormCantidadesProps> = ({ formData, handleInputCh
   <div>
     <input
                 type="text"
+                name="room_number"
                 placeholder="Número de cuartos"
                 value={formData.room_number}
                 onChange={handleInputChange}
@@ -20,6 +21,7 @@ const FormCantidades: React.FC<FormCantidadesProps> = ({ formData, handleInputCh
               />
               <input
                 type="text"
+                name="bath_number"
                 placeholder="Número de baños"
                 value={formData.bath_number}
                 onChange={handleInputChange}
@@ -28,6 +30,7 @@ const FormCantidades: React.FC<FormCantidadesProps> = ({ formData, handleInputCh
 
               <input
                 type="text"
+                name="bed_number"
                 placeholder="Número de Camas"
                 value={formData.bed_number}
                 onChange={handleInputChange}
@@ -36,6 +39,7 @@ const FormCantidades: React.FC<FormCantidadesProps> = ({ formData, handleInputCh
 
               <input
                 type="text"
+                name="sofabed_number"
                 placeholder="Número de sofa cama"
                 value={formData.sofabed_number}
                 onChange={handleInputChange}

@@ -14,7 +14,7 @@ const Rent = (sequelize: Sequelize) => {
         id_user: {
             type: DataTypes.STRING,
             references: {
-                model: "Rents",
+                model: "Users",
                 key: "id_user"
             }
         },

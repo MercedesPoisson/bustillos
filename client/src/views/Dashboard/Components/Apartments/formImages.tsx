@@ -10,7 +10,7 @@ const FormImages: React.FC<FormImagesProps> = ({ formData, handleInputChange }) 
     
     return(
         <div>
-            <div className="relative">
+            <div className="relative mt-4 font-Poppins">
                 <h2 className="mb-2 text-sm font-semibold">Imágenes</h2>
                 <input
                   type="file"
