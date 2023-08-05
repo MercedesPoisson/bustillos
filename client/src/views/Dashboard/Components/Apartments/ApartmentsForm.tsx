@@ -1,29 +1,48 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import { getServices } from "../../../../redux/actions/getServices";
+import { useSelector, useDispatch } from "react-redux";
 import FormImages from "./formImages";
 import FormBoolean from "./formboolean";
 import FormCantidades from "./formCantidades";
 import FormDesciption from "./formDescription";
 import FormMany from "./formMany";
 import FormServices from "./formServices";
-import { State, Services } from "../../../../redux/Types";
+import { State } from "../../../../redux/Types";
+import { Dispatch } from "redux";
+import postApartment from "../../../../redux/actions/postApartment";
 
+interface ApartmentFormData {  
+  ap_number: number | any;
+  title: string | any;
+  floor: number | any;
+  room_number: number | any;
+  bath_number: number | any;
+  bed_number: number | any;
+  sofabed_number: number | any;
+  room_one_bed: string | any;
+  room_two_bed: string | any;
+  room_three_bed:string | any;
+  estar_bed: string | any;
+  property_type: string | any;
+  description: string | any;
+  price_per_night: number | any;
+  images: string[] | any;
+  is_active: boolean | any;
+  max_guests: number | any;
+  min_nights:number | any;
+  weekly_discount: boolean | any;
+  monthly_discount: boolean | any;
+  allow_pets: boolean | any;
+  accessibility: boolean | any;
+  private_access: boolean | any;
+  services: string[] | any;
+}
 
 function ApartmentsForm() {
   const services = useSelector((state: State) => state.services);
+  console.log(services);
   const dispatch = useDispatch();
 
-  console.log(services);
-
-
-  // useEffect(() => {
-  //   dispatch(getServices());
-  // }, [dispatch]);
-
-  
-
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ApartmentFormData>({
     ap_number: "",
     title: "",
     floor: "",
@@ -39,7 +58,6 @@ function ApartmentsForm() {
     description: "",
     price_per_night: "",
     images: [],
-    rating: "",
     max_guests: "",
     min_nights: "",
     is_active: true,
@@ -51,37 +69,10 @@ function ApartmentsForm() {
     services: [] as string[],
   });
 
-  // const handleServiceSelection = (selectedServices: string[]) => {
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     services: selectedServices
-  //   }) as typeof formData); // Asegura que el nuevo estado coincida con el tipo formData
-  // };
-
-  // const handleServiceToggle = (serviceName: string) => {
-  //   if (formData.services.includes(serviceName)) {
-  //     // Si el servicio ya está seleccionado, remuévelo
-  //     setFormData((prevData) => ({
-  //       ...prevData,
-  //       services: prevData.services.filter((service) => service !== serviceName),
-  //     }));
-  //   } else {
-  //     // Si el servicio no está seleccionado, agrégalo
-  //     setFormData((prevData) => ({
-  //       ...prevData,
-  //       services: [...prevData.services, serviceName],
-  //     }));
-  //   }
-  // };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // Handle form submission here
-    console.log(formData)
-  };
-
   const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -100,10 +91,48 @@ function ApartmentsForm() {
     }));
   };
 
+  const handlePost = async() => {
+    console.log("Handling post...");
+    const newForm = new FormData();
+    newForm.append("ap_number", formData.ap_number);
+    newForm.append("title", formData.title);
+    newForm.append("floor", formData.floor);
+    newForm.append("room_number", formData.room_number);
+    newForm.append("bath_number", formData.bath_number);
+    newForm.append("bed_number", formData.bed_number);
+    newForm.append("sofabed_number", formData.sofabed_number);
+    newForm.append("room_one_bed", formData.room_one_bed);
+    newForm.append("room_two_bed", formData.room_two_bed);
+    newForm.append("room_three_bed", formData.room_three_bed);
+    newForm.append("estar_bed", formData.estar_bed);
+    newForm.append("property_type", formData.property_type);
+    newForm.append("description", formData.description);
+    newForm.append("price_per_night", formData.price_per_night);
+
+    formData.images.forEach((image: any, index: any) => {
+      newForm.append(`image-${index}`, image);
+    });
+    newForm.append("is_active", formData.is_active.toString());
+    newForm.append("max_guests", formData.max_guests);
+    newForm.append("min_nights", formData.min_nights);
+    newForm.append("weekly_discount", formData.weekly_discount.toString());
+    newForm.append("monthly_discount", formData.monthly_discount.toString());
+    newForm.append("allow_pets", formData.allow_pets.toString());
+    newForm.append("accessibility", formData.accessibility.toString());
+    newForm.append("private_access", formData.private_access.toString());
+    formData.services.forEach((service: any) => {
+      newForm.append("services", service);
+    });
+
+    const postApartmentAction = postApartment(newForm);
+    await postApartmentAction(dispatch);
+    console.log("Datos enviados a la base de datos, formData");
+  };
+
   return (
     <div>
       <div className="flex w-full  mx-4 sm:mx-auto">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handlePost}>
           <div className="flex h-screen justify-center w-full mx-4 sm:mx-auto ">
             <div className="w-1/2 p-4 font-Poppins ">
               <h1 className="text-xl text-blue font-semibold font-Poppins mb-1">
@@ -134,7 +163,7 @@ function ApartmentsForm() {
                 />
               </div>
 
-              <div >
+              <div>
                 <FormDesciption
                   formData={formData}
                   handleInputChangeTextArea={handleInputChangeTextArea}
@@ -222,13 +251,7 @@ function ApartmentsForm() {
                 formData={formData}
                 handleInputChange={handleInputChange}
               />
-              <FormServices 
-                  
-                />
-            </div>
-            
-            <div>
-            
+              <FormServices />
             </div>
           </div>
         </form>

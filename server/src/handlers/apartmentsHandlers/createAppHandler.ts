@@ -7,7 +7,7 @@ import { imageUpdate } from "../../utils/cloudinary";
 
 const createAppHandler = async(req: Request, res: Response) => {
     const apartmentsArray: string[] = [
-        "id_apartment",
+        // "id_apartment",
         "ap_number",
         "title",
         "floor",
@@ -23,7 +23,7 @@ const createAppHandler = async(req: Request, res: Response) => {
         "description",
         "price_per_night",
         // "images",
-        "rating",
+        // "rating",
         "is_active",
         "max_guests",
         "min_nights",

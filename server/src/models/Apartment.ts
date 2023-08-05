@@ -70,11 +70,11 @@ const Apartment = (sequelize: Sequelize) => {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false
         },
-        rating: {
-            type: DataTypes.FLOAT,
-            allowNull: true,
-            defaultValue: 0
-        },
+        // rating: {
+        //     type: DataTypes.FLOAT,
+        //     allowNull: true,
+        //     defaultValue: 0
+        // },
         is_active: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

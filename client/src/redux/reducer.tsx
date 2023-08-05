@@ -17,6 +17,7 @@ const rootReducer: Reducer<State, Action> = (state = inictialState, {  type, pay
     switch (type) {
         case GET_SERVICES:
             return { ...state, services: payload};
+        
         case GET_APARTMENTS:
             return { ...state, apartments: payload};
         case POST_APARTMENT:

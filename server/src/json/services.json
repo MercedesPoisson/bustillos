@@ -4,7 +4,7 @@
         "icon": "fa-solid fa-wifi"
     },
     {
-        "name": "Televisor",
+        "name": "TV",
         "icon": "fa-solid fa-tv"
     },
     {
@@ -12,7 +12,7 @@
         "icon": "fa-solid fa-kitchen-set"
     },
     {
-        "name": "Aire acondicionado",
+        "name": "AC",
         "icon": "fa-solid fa-snowflake"
     },
     {
@@ -24,7 +24,7 @@
         "icon": "fa-solid fa-fire-flame-curved"
     },
     {
-        "name": "Estacionamiento libre",
+        "name": "Estacionamiento",
         "icon": "fa-solid fa-square-parking"
     },
     {

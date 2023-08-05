@@ -16,7 +16,7 @@ export interface Apartments {
     description: string
     price_per_night: number
     images: string[]
-    rating?: number
+    // rating?: number
     is_active: boolean
     max_guests: number
     min_nights:number
