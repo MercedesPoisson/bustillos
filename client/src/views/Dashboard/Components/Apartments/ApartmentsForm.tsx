@@ -91,6 +91,16 @@ function ApartmentsForm() {
     }));
   };
 
+  const handleImageChange = (images: FileList | null) => {
+    if (images) {
+      const imagesArray = Array.from(images).map((file) => URL.createObjectURL(file));
+      setFormData((prevData) => ({
+        ...prevData,
+        images: imagesArray,
+      }));
+    }
+  };
+
   const handlePost = async() => {
     console.log("Handling post...");
     const newForm = new FormData();
@@ -247,10 +257,7 @@ function ApartmentsForm() {
               </div>
             </div>
             <div className="ml-10">
-              <FormImages
-                formData={formData}
-                handleInputChange={handleInputChange}
-              />
+            <FormImages formData={formData} handleImageChange={handleImageChange} />
               <FormServices />
             </div>
           </div>
