@@ -3,8 +3,8 @@ import SideBar from "./SideBar";
 import Header from "./Header";
 
 const Layout = () => {
-    return(
-        <div className="bg-neutral-100 h-screen w-screen overflow-hidden flex flex-row">
+  return (
+    <div className="bg-neutral-100 h-screen w-screen overflow-hidden flex flex-row">
       <SideBar />
       <div className="flex flex-col flex-1">
         <Header />
@@ -14,6 +14,6 @@ const Layout = () => {
       </div>
       {/* <div>Footer</div> */}
     </div>
-    )
-}
+  );
+};
 export default Layout;
