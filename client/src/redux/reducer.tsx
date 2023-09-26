@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
 import { State, Action } from "./Types"
-import { GET_SERVICES, GET_APARTMENTS, POST_APARTMENT, PUT_APARTMENT, DEACTIVATE_APARTMENT, GET_RENTS, POST_RENT, PUT_RENT, DELETE_RENT } from "./actions/actionTypes";
+import { GET_SERVICES, GET_APARTMENTS, POST_APARTMENT, PUT_APARTMENT, DEACTIVATE_APARTMENT, GET_RENTS, POST_RENT, PUT_RENT, DELETE_RENT, DELETE_APARTMENT } from "./actions/actionTypes";
 
 
 const inictialState: State = {
@@ -25,6 +25,8 @@ const rootReducer: Reducer<State, Action> = (state = inictialState, {  type, pay
         case PUT_APARTMENT:
             return { ...state };
         case DEACTIVATE_APARTMENT:
+            return {...state};
+        case DELETE_APARTMENT:
             return {...state};
         case GET_RENTS:
             return {  ...state, rents: payload };

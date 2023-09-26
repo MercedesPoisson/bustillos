@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import FormImages from "./formImages";
-import FormBoolean from "./formboolean";
-import FormCantidades from "./formCantidades";
-import FormDesciption from "./formDescription";
-import FormMany from "./formMany";
-import FormServices from "./formServices";
+import FormImages from "./CreateApartment/formImages";
+import FormBoolean from "./CreateApartment/formboolean";
+import FormCantidades from "./CreateApartment/formCantidades";
+import FormDesciption from "./CreateApartment/formDescription";
+import FormMany from "./CreateApartment/formMany";
+import FormServices from "./CreateApartment/formServices";
 import { State } from "../../../../redux/Types";
 import { Dispatch } from "redux";
 import postApartment from "../../../../redux/actions/postApartment";
@@ -13,7 +13,7 @@ import postApartment from "../../../../redux/actions/postApartment";
 interface ApartmentFormData {  
   ap_number: number | any;
   title: string | any;
-  floor: number | any;
+  floor: string | any;
   room_number: number | any;
   bath_number: number | any;
   bed_number: number | any;
@@ -45,7 +45,7 @@ function ApartmentsForm() {
   const [formData, setFormData] = useState<ApartmentFormData>({
     ap_number: "",
     title: "",
-    floor: "",
+    floor: "0",
     room_number: "",
     bath_number: "",
     bed_number: "",
@@ -75,6 +75,7 @@ function ApartmentsForm() {
     >
   ) => {
     const { name, value } = event.target;
+    
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -104,6 +105,7 @@ function ApartmentsForm() {
   const handlePost = async() => {
     console.log("Handling post...");
     const newForm = new FormData();
+    console.log("formData before serialization:", formData);
     newForm.append("ap_number", formData.ap_number);
     newForm.append("title", formData.title);
     newForm.append("floor", formData.floor);
@@ -118,6 +120,8 @@ function ApartmentsForm() {
     newForm.append("property_type", formData.property_type);
     newForm.append("description", formData.description);
     newForm.append("price_per_night", formData.price_per_night);
+
+    console.log("newForm before request:", newForm);
 
     formData.images.forEach((image: any, index: any) => {
       newForm.append(`image-${index}`, image);
@@ -134,6 +138,8 @@ function ApartmentsForm() {
       newForm.append("services", service);
     });
 
+    console.log("newForm after adding data:", newForm);
+debugger
     const postApartmentAction = postApartment(newForm);
     await postApartmentAction(dispatch);
     console.log("Datos enviados a la base de datos, formData");
@@ -201,12 +207,12 @@ function ApartmentsForm() {
 
                 <select
                   name="floor"
-                  value={formData.floor.toString()}
+                  value={formData.floor}
                   placeholder="Piso"
                   onChange={handleInputChange}
                   className="block w-80 mb-2 p-2 border border-gray-300 rounded"
                 >
-                  <option value="0">PB</option>
+                  <option value="0">0</option>
                   <option value="1">1</option>
                 </select>
               </div>

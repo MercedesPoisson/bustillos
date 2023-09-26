@@ -25,6 +25,7 @@ export interface Apartments {
     allow_pets: boolean
     accessibility: boolean
     private_access: boolean
+    services: Services[]
 }
 
 export interface Services {
