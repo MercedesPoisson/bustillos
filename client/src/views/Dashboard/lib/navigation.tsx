@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBorderAll, faBuilding, faCity, faBook, faBookOpen, faCog, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBorderAll, faBuilding, faCity, faBook, faBookOpen, faCog, faQuestionCircle, faCommentDollar, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 interface SidebarItem {
     key: string;
@@ -39,6 +39,18 @@ export const DASHBOARD_SIDEBAR_LINKS: SidebarItem[] = [
 		label: 'Reservas',
 		path: '/dashboard/allrents',
 		icon: <FontAwesomeIcon icon={faBookOpen} />
+	},
+	{
+		key: 'setprices',
+		label: 'Alta Precios',
+		path: '/dashboard/setprices',
+		icon: <FontAwesomeIcon icon={faCommentDollar} />
+	},
+	{
+		key: 'prices',
+		label: 'Precios',
+		path: '/dashboard/prices',
+		icon: <FontAwesomeIcon icon={faCommentDollar} />
 	},
 ]
 

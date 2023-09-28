@@ -7,6 +7,8 @@ import ApartmentsForm from "./views/Dashboard/Components/Apartments/ApartmentsFo
 import AllApartments from "./views/Dashboard/Components/Apartments/AllApartments";
 import RentsForm from "./views/Dashboard/Components/Rents/RentsForm";
 import AllRents from "./views/Dashboard/Components/Rents/AllRents";
+import SetPrices from "./views/Dashboard/Components/Prices/SetPrices";
+import Prices from "./views/Dashboard/Components/Prices/prices";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="allapartments" element={<AllApartments />} />
         <Route path="formrents" element={<RentsForm />} />
         <Route path="allrents" element={<AllRents />} />
+        <Route path="setprices" element={<SetPrices />} />
+        <Route path="prices" element={<Prices />} />
       </Route>
       
     </Routes>
