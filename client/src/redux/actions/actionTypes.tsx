@@ -12,3 +12,8 @@ export const POST_RENT:string = "POST_RENT";
 export const PUT_RENT:string = "PUT_RENT";
 export const DELETE_RENT:string = "DELETE_RENT";
 
+export const POST_PRICE:string = "POST_PRICE";
+export const PUT_PRICE:string = "PUT_PRICE";
+export const DELETE_PRICE:string = "DELETE_PRICE";
+export const GET_PRICES:string = "GET_PRICES";
+

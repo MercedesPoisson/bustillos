@@ -11,6 +11,8 @@ import {
   PUT_RENT,
   DELETE_RENT,
   DELETE_APARTMENT,
+  GET_PRICES,
+  POST_PRICE,
 } from "./actions/actionTypes";
 
 const inictialState: State = {
@@ -53,6 +55,10 @@ const rootReducer: Reducer<State, Action> = (
     case PUT_RENT:
       return { ...state };
     case DELETE_RENT:
+      return { ...state };
+    case GET_PRICES:
+      return { ...state, price: payload };
+    case POST_PRICE:
       return { ...state };
     default:
       return state;

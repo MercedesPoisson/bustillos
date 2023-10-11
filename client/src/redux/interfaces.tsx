@@ -30,3 +30,12 @@ export interface Services {
     id_service: number | any;
     name: string | any;
     }
+
+export interface Prices {
+  id_price: number
+    id_apartment: number
+    title: string
+    price_per_night_pesos: number
+    price_per_night_dolar: number
+    season: string
+}
