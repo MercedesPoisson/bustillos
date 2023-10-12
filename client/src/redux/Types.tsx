@@ -94,11 +94,10 @@ export interface Users {
 export interface Price {
     id_price: number
     id_apartment: number
-    key_word: string
-    guests_number: number
-    price_per_night: number
-    start_date: Date
-    end_date: Date
+    title: string
+    price_per_night_pesos: number
+    price_per_night_dolar: number
+    season: string
 }
 
 export interface Action {

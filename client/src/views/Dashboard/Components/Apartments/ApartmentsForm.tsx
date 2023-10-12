@@ -7,7 +7,6 @@ import FormDesciption from "./CreateApartment/formDescription";
 import FormMany from "./CreateApartment/formMany";
 import FormServices from "./CreateApartment/formServices";
 import { State } from "../../../../redux/Types";
-import { Dispatch } from "redux";
 import postApartment from "../../../../redux/actions/postApartment";
 
 interface ApartmentFormData {  

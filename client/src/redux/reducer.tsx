@@ -49,6 +49,8 @@ const rootReducer: Reducer<State, Action> = (
       );
       return { ...state, apartments: updatedApartments };
     case GET_RENTS:
+      console.log("Datos de reservas recibidos:", payload);
+      
       return { ...state, rents: payload };
     case POST_RENT:
       return { ...state };
