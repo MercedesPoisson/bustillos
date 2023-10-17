@@ -7,11 +7,13 @@ interface ManyRentsProps {
     pets: boolean;
   };
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleCheckboxChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ManyRentsForm: React.FC<ManyRentsProps> = ({
   formData,
   handleInputChange,
+  handleCheckboxChange,
 }) => {
   return (
     <div className="w-1/2 p-4 font-Poppins">
@@ -61,7 +63,7 @@ const ManyRentsForm: React.FC<ManyRentsProps> = ({
           name="pets"
           className="mb-4 ml-2"
           checked={formData.pets}
-          onChange={handleInputChange}
+          onChange={handleCheckboxChange}
         />
       </div>
     </div>

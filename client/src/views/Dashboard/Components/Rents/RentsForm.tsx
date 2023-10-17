@@ -85,6 +85,7 @@ const RentsForm = () => {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
+        
         setFormData((prevData) => {
             return {
                 ...prevData,
@@ -92,6 +93,16 @@ const RentsForm = () => {
             };
         });
     }
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, checked } = e.target;
+        setFormData((prevData) => {
+          return {
+            ...prevData,
+            [name]: checked,
+          };
+        });
+      };
 
     const handlePostRent = async () => {
         const newForm = new FormData();
@@ -138,8 +149,8 @@ const RentsForm = () => {
         <div>
             <form onSubmit={handlePostRent}>
                 layout RentsForm
-            <WhoRentsForm formData={formData} handleInputChange={handleInputChange}/>
-            <ManyRentForm formData={formData} handleInputChange={handleInputChange}/>
+            <WhoRentsForm formData={formData} handleInputChange={handleInputChange} handleCheckboxChange={handleCheckboxChange}/>
+            <ManyRentForm formData={formData} handleInputChange={handleInputChange} handleCheckboxChange={handleCheckboxChange}/>
             <WhereRentForm formData={formData} handleInputChange={handleInputChange}/>
             <button
         type="submit"

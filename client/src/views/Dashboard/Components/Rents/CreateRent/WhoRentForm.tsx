@@ -11,11 +11,13 @@ interface whoRentsProps {
     car_plate: string;
   };
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleCheckboxChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const WhoRentsForm: React.FC<whoRentsProps> = ({
   formData,
   handleInputChange,
+  handleCheckboxChange
 }) => {
   return (
     <div className="w-1/2 p-4 font-Poppins">
@@ -84,7 +86,7 @@ const WhoRentsForm: React.FC<whoRentsProps> = ({
           name="car"
           className="mb-4 ml-2"
           checked={formData.car}
-          onChange={handleInputChange}
+          onChange={handleCheckboxChange}
         />
       </div>
 
