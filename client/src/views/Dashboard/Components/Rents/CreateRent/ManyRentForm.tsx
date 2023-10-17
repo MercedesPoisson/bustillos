@@ -60,7 +60,8 @@ const ManyRentsForm: React.FC<ManyRentsProps> = ({
           type="checkbox"
           name="pets"
           className="mb-4 ml-2"
-          value={formData.pets.toString()}
+          checked={formData.pets}
+          onChange={handleInputChange}
         />
       </div>
     </div>

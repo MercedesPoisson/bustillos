@@ -46,8 +46,8 @@ const WhereRentForm: React.FC<whereRentProps> = ({ formData, handleInputChange }
       <div>
         <label>Departamento:</label>
           <select
-            name="title"
-            value={formData.id_apartment.toString()}
+            name="id_apartment"
+            value={formData.id_apartment || ""}
             onChange={handleInputChange}
             className="block w-80 mb-2 p-2 border border-gray-300 rounded"
           >

@@ -29,7 +29,7 @@ const WhoRentsForm: React.FC<whoRentsProps> = ({
           name="name"
           className="block w-80 mb-2 p-2 border border-gray-300 rounded"
           value={formData.name}
-            onChange={handleInputChange}
+          onChange={handleInputChange}
         />
       </div>
 
@@ -39,8 +39,8 @@ const WhoRentsForm: React.FC<whoRentsProps> = ({
           type="text"
           name="surname"
           className="block w-80 mb-2 p-2 border border-gray-300 rounded"
-            value={formData.surname}
-                onChange={handleInputChange}
+          value={formData.surname}
+          onChange={handleInputChange}
         />
       </div>
 
@@ -51,7 +51,7 @@ const WhoRentsForm: React.FC<whoRentsProps> = ({
           name="phone"
           className="block w-80 mb-2 p-2 border border-gray-300 rounded"
           value={formData.phone}
-            onChange={handleInputChange}
+          onChange={handleInputChange}
         />
       </div>
 
@@ -61,8 +61,8 @@ const WhoRentsForm: React.FC<whoRentsProps> = ({
           type="text"
           name="mail"
           className="block w-80 mb-2 p-2 border border-gray-300 rounded"
-            value={formData.mail}
-                onChange={handleInputChange}
+          value={formData.mail}
+          onChange={handleInputChange}
         />
       </div>
 
@@ -72,17 +72,20 @@ const WhoRentsForm: React.FC<whoRentsProps> = ({
           type="text"
           name="cuit_dni"
           className="block w-80 mb-2 p-2 border border-gray-300 rounded"
-            value={formData.cuit_dni}
-                onChange={handleInputChange}
+          value={formData.cuit_dni}
+          onChange={handleInputChange}
         />
       </div>
 
       <div>
         <label>¿Tiene automóvil?</label>
-        <input type="checkbox" name="car" className="mb-4 ml-2" 
-        value={formData.car.toString()}
+        <input
+          type="checkbox"
+          name="car"
+          className="mb-4 ml-2"
+          checked={formData.car}
+          onChange={handleInputChange}
         />
-
       </div>
 
       <div>
@@ -91,12 +94,10 @@ const WhoRentsForm: React.FC<whoRentsProps> = ({
           type="text"
           name="car_plate"
           className="block w-80 mb-2 p-2 border border-gray-300 rounded"
-            value={formData.car_plate}
-                onChange={handleInputChange}
+          value={formData.car_plate}
+          onChange={handleInputChange}
         />
       </div>
-
-      
     </div>
   );
 };
