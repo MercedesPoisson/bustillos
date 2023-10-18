@@ -12,9 +12,16 @@ interface WhenRentProps {
   handleDatePickerChange: (name: string, date: Date | null) => void;
 }
 
-const WhenRentForm: React.FC<WhenRentProps> = ({ formData, handleDatePickerChange }) => {
-  const [startDate, setStartDate] = useState<Date | null>(formData.dateRange.start_date);
-  const [endDate, setEndDate] = useState<Date | null>(formData.dateRange.end_date);
+const WhenRentForm: React.FC<WhenRentProps> = ({
+  formData,
+  handleDatePickerChange,
+}) => {
+  const [startDate, setStartDate] = useState<Date | null>(
+    formData.dateRange.start_date
+  );
+  const [endDate, setEndDate] = useState<Date | null>(
+    formData.dateRange.end_date
+  );
 
   const handleDateChange = (dates: [Date, Date]) => {
     const [start, end] = dates;
@@ -25,19 +32,13 @@ const WhenRentForm: React.FC<WhenRentProps> = ({ formData, handleDatePickerChang
     // Luego, llama a tu función handleDatePickerChange para actualizar el estado en RentsForm
     handleDatePickerChange("start_date", start);
     handleDatePickerChange("end_date", end);
-};
-
-//   const resetSelection = () => {
-//     // Esta función restablece la selección de fechas
-//     setStartDate(null);
-//     setEndDate(null);
-//     handleDatePickerChange("start_date", null);
-//     handleDatePickerChange("end_date", null);
-//   };
+  };
 
   return (
     <div className="w-1/2 p-4 font-Poppins">
-      <h1 className="text-xl text-blue font-semibold font-Poppins mb-1">CUANDO</h1>
+      <h1 className="text-xl text-blue font-semibold font-Poppins mb-1">
+        CUANDO
+      </h1>
       <div>
         <DatePicker
           dateFormat="dd/MM/yyyy"
@@ -77,10 +78,6 @@ const WhenRentForm: React.FC<WhenRentProps> = ({ formData, handleDatePickerChang
           </span>
         </p>
       </div>
-{/* 
-      <button type="button" onClick={resetSelection} className="bg-red-400 text-white p-2 rounded">
-        Reiniciar selección
-      </button> */}
     </div>
   );
 };

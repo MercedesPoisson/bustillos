@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import WhereRentForm from "./CreateRent/WhereRentForm";
 import postRent from "../../../../redux/actions/postRent";
 import WhenRentForm from "./CreateRent/WhenRentForm";
-import { log } from "console";
+import SourceRentForm from "./CreateRent/SourceRentForm";
 
 interface RentsFormData {
   name: string;
@@ -170,12 +170,9 @@ const RentsForm = () => {
     newForm.append("car_plate", formData.car_plate);
     const postRentAction = postRent(newForm);
     await postRentAction(dispatch);
-    console.log("Datos enviados a la base de datos, formData");
-    console.log("formato de fecha DESDE el form", formData.dateRange.start_date);
-    console.log("formato de fecha HASTA el form", formData.dateRange.end_date);
-    
-    
-    
+    // console.log("Datos enviados a la base de datos, formData");
+    // console.log("formato de fecha DESDE el form", formData.dateRange.start_date);
+    // console.log("formato de fecha HASTA el form", formData.dateRange.end_date);
   };
 
   return (
@@ -200,6 +197,10 @@ const RentsForm = () => {
           formData={formData}
           handleDatePickerChange={handleDatePickerChange}
         />
+        <SourceRentForm
+          formData={formData}
+          handleInputChange={handleInputChange}
+          />
         <button
           type="submit"
           className="bg-blue hover:bg-lightblue text-white hover:text-midblue py-2 px-4 rounded"
