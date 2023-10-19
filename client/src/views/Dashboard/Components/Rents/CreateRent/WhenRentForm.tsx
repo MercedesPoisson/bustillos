@@ -36,7 +36,7 @@ const WhenRentForm: React.FC<WhenRentProps> = ({
 
   return (
     <div className="w-1/2 p-4 font-Poppins">
-      <h1 className="text-xl text-blue font-semibold font-Poppins mb-1">
+      <h1 className="text-lg text-blue font-semibold font-Poppins mb-1">
         CUANDO
       </h1>
       <div>
@@ -53,7 +53,7 @@ const WhenRentForm: React.FC<WhenRentProps> = ({
         />
       </div>
 
-      <div className="flex justify-around mb-2">
+      <div className="flex mb-2 mt-2">
         <p>
           <span>Desde: </span>
           <span>

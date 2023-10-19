@@ -186,26 +186,32 @@ const RentsForm = () => {
   return (
     <div>
       <form onSubmit={handlePostRent}>
-        <ul className="flex text-lg text-blue font-semibold font-Poppins cursor-pointer">
+        <ul className="flex text-base text-blue font-semibold font-Poppins cursor-pointer">
           <li
-            className={`mr-4 hover:text-lightblue ${
-              activeTab === "whoRents" ? "active" : ""
+            className={`mr-4 p-2 ${
+              activeTab === "whoRents"
+                ? "active bg-blue text-lightblue border rounded-lg"
+                : "hover:text-lightblue"
             }`}
             onClick={() => handleTabChange("whoRents")}
           >
             QUIEN
           </li>
           <li
-            className={`mr-4 hover:text-lightblue ${
-              activeTab === "manyRent" ? "active" : ""
+            className={`mr-4  p-2 ${
+              activeTab === "manyRent"
+                ? "active bg-blue text-lightblue border rounded-lg"
+                : "hover:text-lightblue"
             }`}
             onClick={() => handleTabChange("manyRent")}
           >
             CUANTOS
           </li>
           <li
-            className={`mr-4 hover:text-lightblue ${
-              activeTab === "whereRent" ? "active" : ""
+            className={`mr-4 p-2 ${
+              activeTab === "whereRent"
+                ? "active bg-blue text-lightblue border rounded-lg"
+                : "hover:text-lightblue"
             }`}
             onClick={() => handleTabChange("whereRent")}
           >
@@ -213,8 +219,10 @@ const RentsForm = () => {
           </li>
 
           <li
-            className={`mr-4 hover:text-lightblue ${
-              activeTab === "whenRent" ? "active" : ""
+            className={`mr-4 p-2 ${
+              activeTab === "whenRent"
+                ? "active bg-blue text-lightblue border rounded-lg"
+                : "hover:text-lightblue"
             }`}
             onClick={() => handleTabChange("whenRent")}
           >
@@ -222,8 +230,10 @@ const RentsForm = () => {
           </li>
 
           <li
-            className={`mr-4 hover:text-lightblue ${
-              activeTab === "source" ? "active" : ""
+            className={`mr-4 p-2 ${
+              activeTab === "source"
+                ? "active bg-blue text-lightblue border rounded-lg"
+                : "hover:text-lightblue"
             }`}
             onClick={() => handleTabChange("source")}
           >
@@ -231,17 +241,21 @@ const RentsForm = () => {
           </li>
 
           <li
-            className={`mr-4 hover:text-lightblue ${
-              activeTab === "price" ? "active" : ""
-            }`}
+            className={`mr-4 p-2 ${
+                activeTab === "price"
+                  ? "active bg-blue text-lightblue border rounded-lg"
+                  : "hover:text-lightblue"
+              }`}
             onClick={() => handleTabChange("price")}
           >
             PRECIO
           </li>
 
           <li
-            className={`mr-4 hover:text-lightblue ${
-              activeTab === "armado" ? "active" : ""
+            className={`mr-4 p-2 ${
+              activeTab === "armado"
+                ? "active bg-blue text-lightblue border rounded-lg"
+                : "hover:text-lightblue"
             }`}
             onClick={() => handleTabChange("armado")}
           >

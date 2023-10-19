@@ -40,7 +40,7 @@ const WhereRentForm: React.FC<whereRentProps> = ({ formData, handleInputChange }
 
     return(
         <div className="w-1/2 p-4 font-Poppins">
-            <h1 className="text-xl text-blue font-semibold font-Poppins mb-1">
+            <h1 className="text-lg text-blue font-semibold font-Poppins mb-1">
         DONDE
       </h1>
       <div>

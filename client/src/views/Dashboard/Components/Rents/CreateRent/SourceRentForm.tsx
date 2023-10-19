@@ -10,7 +10,7 @@ interface SourceRentProps {
 const SourceRentForm: React.FC<SourceRentProps> = ({ formData, handleInputChange }) => {
   return (
     <div className="w-1/2 p-4 font-Poppins">
-      <h1 className="text-xl text-blue font-semibold font-Poppins mb-1">FUENTE</h1>
+      <h1 className="text-lg text-blue font-semibold font-Poppins mb-1">FUENTE</h1>
       <div>
         <label>¿Por donde se vendió?</label>
         <select
