@@ -6,6 +6,8 @@ import WhereRentForm from "./CreateRent/WhereRentForm";
 import postRent from "../../../../redux/actions/postRent";
 import WhenRentForm from "./CreateRent/WhenRentForm";
 import SourceRentForm from "./CreateRent/SourceRentForm";
+import PriceRentForm from "./CreateRent/PriceRentForm";
+import SpecialRentForm from "./CreateRent/SpecialRentForm";
 
 interface RentsFormData {
   name: string;
@@ -26,13 +28,13 @@ interface RentsFormData {
   pets: boolean;
   currency: string;
   total_amount: number;
-  deposit: number;
+  deposit: boolean;
   exchange_rate: number;
   deposit_amount: number;
   balance_exchange_rate: number;
   balance: number;
   pre_viaje: boolean;
-  payment_status: boolean;
+  payment_status: string;
   payment_date: Date;
   review_status: boolean;
   creation_date: Date;
@@ -69,13 +71,13 @@ const RentsForm = () => {
     pets: false,
     currency: "",
     total_amount: 0,
-    deposit: 0,
+    deposit: false,
     exchange_rate: 0,
     deposit_amount: 0,
     balance_exchange_rate: 0,
     balance: 0,
     pre_viaje: false,
-    payment_status: false,
+    payment_status: "",
     payment_date: new Date(),
     review_status: false,
     creation_date: new Date(),
@@ -201,6 +203,15 @@ const RentsForm = () => {
           formData={formData}
           handleInputChange={handleInputChange}
           />
+        <PriceRentForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+            handleCheckBoxChange={handleCheckboxChange}
+        />
+        <SpecialRentForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+        />
         <button
           type="submit"
           className="bg-blue hover:bg-lightblue text-white hover:text-midblue py-2 px-4 rounded"
