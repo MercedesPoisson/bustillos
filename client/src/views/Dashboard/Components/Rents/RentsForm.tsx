@@ -127,6 +127,12 @@ const RentsForm = () => {
     }));
   };
 
+  const [activeTab, setActiveTab] = useState("whoRents");
+
+  const handleTabChange = (tabName: any) => {
+    setActiveTab(tabName);
+  };
+
   const handlePostRent = async () => {
     console.log("Form Data antes de enviar:", formData);
     const newForm = new FormData();
@@ -180,7 +186,122 @@ const RentsForm = () => {
   return (
     <div>
       <form onSubmit={handlePostRent}>
-        layout RentsForm
+        <ul className="flex text-lg text-blue font-semibold font-Poppins cursor-pointer">
+          <li
+            className={`mr-4 hover:text-lightblue ${
+              activeTab === "whoRents" ? "active" : ""
+            }`}
+            onClick={() => handleTabChange("whoRents")}
+          >
+            QUIEN
+          </li>
+          <li
+            className={`mr-4 hover:text-lightblue ${
+              activeTab === "manyRent" ? "active" : ""
+            }`}
+            onClick={() => handleTabChange("manyRent")}
+          >
+            CUANTOS
+          </li>
+          <li
+            className={`mr-4 hover:text-lightblue ${
+              activeTab === "whereRent" ? "active" : ""
+            }`}
+            onClick={() => handleTabChange("whereRent")}
+          >
+            DONDE
+          </li>
+
+          <li
+            className={`mr-4 hover:text-lightblue ${
+              activeTab === "whenRent" ? "active" : ""
+            }`}
+            onClick={() => handleTabChange("whenRent")}
+          >
+            CUANDO
+          </li>
+
+          <li
+            className={`mr-4 hover:text-lightblue ${
+              activeTab === "source" ? "active" : ""
+            }`}
+            onClick={() => handleTabChange("source")}
+          >
+            FUENTE
+          </li>
+
+          <li
+            className={`mr-4 hover:text-lightblue ${
+              activeTab === "price" ? "active" : ""
+            }`}
+            onClick={() => handleTabChange("price")}
+          >
+            PRECIO
+          </li>
+
+          <li
+            className={`mr-4 hover:text-lightblue ${
+              activeTab === "armado" ? "active" : ""
+            }`}
+            onClick={() => handleTabChange("armado")}
+          >
+            ARMADO ESPECIAL
+          </li>
+        </ul>
+
+        {activeTab === "whoRents" && (
+          <WhoRentsForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+            handleCheckboxChange={handleCheckboxChange}
+          />
+        )}
+
+        {activeTab === "manyRent" && (
+          <ManyRentForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+            handleCheckboxChange={handleCheckboxChange}
+          />
+        )}
+
+        {activeTab === "whereRent" && (
+          <WhereRentForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        )}
+
+        {activeTab === "whenRent" && (
+          <WhenRentForm
+            formData={formData}
+            handleDatePickerChange={handleDatePickerChange}
+          />
+        )}
+
+        {activeTab === "source" && (
+          <SourceRentForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        )}
+
+        {activeTab === "price" && (
+          <PriceRentForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+            handleCheckBoxChange={handleCheckboxChange}
+          />
+        )}
+
+        {activeTab === "armado" && (
+          <SpecialRentForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        )}
+        {/* 
+
         <WhoRentsForm
           formData={formData}
           handleInputChange={handleInputChange}
@@ -211,7 +332,7 @@ const RentsForm = () => {
         <SpecialRentForm
             formData={formData}
             handleInputChange={handleInputChange}
-        />
+        /> */}
         <button
           type="submit"
           className="bg-blue hover:bg-lightblue text-white hover:text-midblue py-2 px-4 rounded"
