@@ -13,6 +13,7 @@ import {
   DELETE_APARTMENT,
   GET_PRICES,
   POST_PRICE,
+  POST_GUEST,
 } from "./actions/actionTypes";
 
 const inictialState: State = {
@@ -23,6 +24,7 @@ const inictialState: State = {
   favorites: [],
   rents: [],
   price: [],
+  guests: [],
 };
 
 const rootReducer: Reducer<State, Action> = (
@@ -32,7 +34,6 @@ const rootReducer: Reducer<State, Action> = (
   switch (type) {
     case GET_SERVICES:
       return { ...state, services: payload };
-
     case GET_APARTMENTS:
       console.log("Datos de apartamentos recibidos:", payload);
       return { ...state, apartments: payload };
@@ -50,7 +51,7 @@ const rootReducer: Reducer<State, Action> = (
       return { ...state, apartments: updatedApartments };
     case GET_RENTS:
       console.log("Datos de reservas recibidos:", payload);
-      
+
       return { ...state, rents: payload };
     case POST_RENT:
       return { ...state };
@@ -62,6 +63,8 @@ const rootReducer: Reducer<State, Action> = (
       return { ...state, price: payload };
     case POST_PRICE:
       return { ...state };
+    case POST_GUEST:
+      return { ...state, guests: payload };
     default:
       return state;
   }

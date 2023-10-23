@@ -12,31 +12,6 @@ interface whereRentProps {
 const WhereRentForm: React.FC<whereRentProps> = ({ formData, handleInputChange }) => {
     const apartments = useSelector((state: State) => state.apartments);
 
-    // const handleChange = (
-    //     event: React.ChangeEvent<
-    //       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    //     >
-    //   ) => {
-    //     const { name, value } = event.target;
-    //     setFormData((prevData) => {
-    //       if (name === "title") {
-    //         const selectedApartment = apartments.find(
-    //           (apartment) => apartment.id_apartment.toString() === value
-    //         );
-    //         if (selectedApartment) {
-    //           return {
-    //             ...prevData,
-    //             id_apartment: selectedApartment.id_apartment,
-    //             title: selectedApartment.title,
-    //           };
-    //         }
-    //       }
-    //       return {
-    //         ...prevData,
-    //         [name]: value,
-    //       };
-    //     });
-    //   };
 
     return(
         <div className="w-1/2 p-4 font-Poppins">

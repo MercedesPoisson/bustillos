@@ -17,3 +17,8 @@ export const PUT_PRICE:string = "PUT_PRICE";
 export const DELETE_PRICE:string = "DELETE_PRICE";
 export const GET_PRICES:string = "GET_PRICES";
 
+export const POST_GUEST:string = "POST_GUEST";
+export const PUT_GUEST:string = "PUT_GUEST";
+export const DELETE_GUEST:string = "DELETE_GUEST";
+export const GET_GUESTS:string = "GET_GUESTS";
+

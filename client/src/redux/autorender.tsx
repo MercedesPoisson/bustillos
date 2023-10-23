@@ -4,6 +4,7 @@ import { AnyAction } from "redux";
 import getServices from "./actions/getServices"; 
 import getApartments from "./actions/getApartments";
 import getPrices from "./actions/getPrices";
+import getRents from "./actions/getRents";
 
 function AutoRender() {
     const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function AutoRender() {
             await dispatch(getServices() as unknown as AnyAction);
             await dispatch(getApartments() as unknown as AnyAction);
             await dispatch(getPrices() as unknown as AnyAction);
+            await dispatch(getRents() as unknown as AnyAction);
             // Puedes agregar aquí más llamadas a otras acciones si es necesario
         };
         fetchData();

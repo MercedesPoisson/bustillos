@@ -1,4 +1,4 @@
-import { Route, Routes, Outlet } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import Home from "./views/Home/home";
 import Layout from "./views/Dashboard/shared/Layout";
@@ -9,6 +9,7 @@ import RentsForm from "./views/Dashboard/Components/Rents/RentsForm";
 import AllRents from "./views/Dashboard/Components/Rents/AllRents";
 import SetPrices from "./views/Dashboard/Components/Prices/SetPrices";
 import Prices from "./views/Dashboard/Components/Prices/prices";
+import CreateGuest from "./views/Dashboard/Components/Guests/CreateGuest";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="allrents" element={<AllRents />} />
         <Route path="setprices" element={<SetPrices />} />
         <Route path="prices" element={<Prices />} />
+        <Route path="guests" element={<CreateGuest />} />
       </Route>
       
     </Routes>

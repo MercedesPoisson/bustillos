@@ -42,6 +42,7 @@ export interface State {
     favorites: Apartments[]
     rents: Rents[],
     price: Price[],
+    guests: Guests[]
 }
 
 export interface Rents {
@@ -75,6 +76,7 @@ export interface Rents {
     room_two: string
     room_three: string
     room_estar: string
+    booking_number: string
 }
 
 export interface Users {
@@ -104,3 +106,17 @@ export interface Action {
     type: string;
     payload: any;
 }
+
+export interface Guests {
+    pax_name: string
+    pax_surname: string
+    pax_dni: string
+    id_rent: number
+  }
+
+  export interface GuestFormData {
+    pax_name: string;
+    pax_surname: string;
+    pax_dni: string;
+    id_rent: number;
+  }

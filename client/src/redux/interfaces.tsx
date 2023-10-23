@@ -39,3 +39,10 @@ export interface Prices {
     price_per_night_dolar: number
     season: string
 }
+
+export interface Guests {
+  pax_name: string
+  pax_surname: string
+  pax_dni: string
+  id_rent: number
+}
