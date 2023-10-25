@@ -1,20 +1,21 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import postGuests from "../../../../redux/actions/postGuest";
+import { useSelector } from "react-redux";
+// import postGuests from "../../../../redux/actions/postGuest";
 import { State } from "../../../../redux/Types";
 import FormPersonalData from "./Create/PersonalData";
+import axios from "axios";
+import { Guests } from "../../../../redux/Types";
 
 const CreateGuest = () => {
-  const dispatch = useDispatch();
   const rents = useSelector((state: State) => state.rents);
 
-  const [formData, setFormData] = useState([
+  const [guests, setGuests] = useState([
     { pax_name: '', pax_surname: '', pax_dni: '', id_rent: 0 },
   ]);
 
   const [selectedBookingNumber, setSelectedBookingNumber] = useState<string | null>(null);
 
-  const [idRent, setIdRent] = useState<number | null>(null);
+  const [idRent, setIdRent] = useState<number>(0);
 
   const [activeTab, setActiveTab] = useState<number | null>(null);
 
@@ -23,33 +24,41 @@ const CreateGuest = () => {
   };
 
   const handleAddAccompanist = () => {
-    if (formData.length < 7) {
-      setFormData((prevData) => [
+    if (guests.length < 7) {
+      setGuests((prevData) => [
         ...prevData,
         { pax_name: "", pax_surname: "", pax_dni: "", id_rent: 0 },
       ]);
     }
   };
 
+  const postGuests = async (guestData: Guests[]) => {
+      try {
+        console.log("Preparing to post...", guestData);
+        const response = await axios.post(`http://localhost:3001/guests/`, guestData
+          );
+        console.log("Datos enviados a la base de datos, formData", response.data );
+        
+      } catch (error) {
+        // Maneja el error aquí
+        console.error("Error posting guests:", error);
+      }
+  };
+
+
   const handlePostGuest = async (event: any) => {
     event.preventDefault();
-  
-    // Crear un objeto formData y agregar los datos
-    const formDataToSend = new FormData();
-    if (idRent !== null) {
-      formData.forEach((guest, index) => {
-        formDataToSend.append(`guests[${index}][pax_name]`, guest.pax_name);
-        formDataToSend.append(`guests[${index}][pax_surname]`, guest.pax_surname);
-        formDataToSend.append(`guests[${index}][pax_dni]`, guest.pax_dni);
-        formDataToSend.append(`guests[${index}][id_rent]`, idRent.toString());
-      });
-  
-      console.log('Data to send:', formDataToSend); // Verificar los datos
-  
-      // Enviar la solicitud para guardar los datos de los acompañantes
-      await postGuests(formDataToSend)(dispatch);
+
+    guests.forEach((guest) => {
+      guest.id_rent = idRent;
+    });
+      console.log("formData", guests);
+
+    const response = await postGuests(guests);
+    return response;
     }
-  };
+
+
 
   return (
     <div className="w-1/2 p-4 font-Poppins">
@@ -79,7 +88,7 @@ const CreateGuest = () => {
           </select>
         </div>
         <ul className="flex text-base text-blue font-semibold font-Poppins cursor-pointer">
-          {formData.map((_, index) => (
+          {guests.map((_, index) => (
             <li
               className={`mr-4 p-2 ${
                 activeTab === index
@@ -95,15 +104,15 @@ const CreateGuest = () => {
             Agregar Acompañante
           </li>
         </ul>
-        {formData.map((data, index) => (
+        {guests.map((data, index) => (
           <div key={index}>
             {activeTab === index && (
               <FormPersonalData
               key={index}
             //   index={index}
-                formData={data}
+                guests={data}
                 setFormData={(updatedData) => {
-                  setFormData((prevData) => {
+                  setGuests((prevData) => {
                     const newFormData = [...prevData];
                     newFormData[index] =
                       typeof updatedData === "function"

@@ -71,7 +71,7 @@
 import { GuestFormData } from "../../../../../redux/Types"
 
 interface FormPersonalDataProps {
-    formData: {
+  guests: {
         pax_name: string
         pax_surname: string
         pax_dni: string
@@ -80,7 +80,7 @@ interface FormPersonalDataProps {
 }
 
 const FormPersonalData: React.FC<FormPersonalDataProps> = ({
-    formData,
+  guests,
     setFormData,
   }) => {
     return (
@@ -90,7 +90,7 @@ const FormPersonalData: React.FC<FormPersonalDataProps> = ({
           <input
             type="text"
             name="pax_name"
-            value={formData.pax_name}
+            value={guests.pax_name}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -105,7 +105,7 @@ const FormPersonalData: React.FC<FormPersonalDataProps> = ({
           <input
             type="text"
             name="pax_surname"
-            value={formData.pax_surname}
+            value={guests.pax_surname}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
@@ -120,7 +120,7 @@ const FormPersonalData: React.FC<FormPersonalDataProps> = ({
           <input
             type="text"
             name="pax_dni"
-            value={formData.pax_dni}
+            value={guests.pax_dni}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,

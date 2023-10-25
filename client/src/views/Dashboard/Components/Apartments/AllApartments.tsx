@@ -42,9 +42,14 @@ const AllApartments = () => {
                <th>ID</th>
                <th>Número</th>
                <th>Nombre</th>
-               <th>Precio x Noche</th>
+               <th>Piso</th>
+               {/* <th>Precio x Noche</th> */}
                <th>Minimo de Noches</th>
                <th>Capacidad</th>
+               <th>Cuartos</th>
+               <th>Camas</th>
+               <th>Sofá Cama</th>
+               <th>Baños</th>
                {/* <th>Servicios</th> */}
                <th>Editar</th>
                <th>Eliminar</th>
@@ -56,9 +61,14 @@ const AllApartments = () => {
                 <td>{apartment.id_apartment}</td>
                 <td>{apartment.ap_number}</td>
                 <td>{apartment.title}</td>
-                <td>{apartment.price_per_night}</td>
+                <td>{apartment.floor}</td>
+                {/* <td>{apartment.price_per_night}</td> */}
                 <td>{apartment.min_nights}</td>
                 <td >{apartment.max_guests}</td>
+                <td >{apartment.room_number}</td>
+                <td >{apartment.bed_number}</td>
+                <td >{apartment.sofabed_number}</td>
+                <td >{apartment.bath_number}</td>
                 {/* <td>
                   {apartment.services.map((service) => (
                     <span key={service.id_service}>{service.name}</span>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import postPrice from "../../../../redux/actions/postPrice";
 import { State } from "../../../../redux/Types";
+import Swal from "sweetalert2";
 
 interface PricesFormData {
   id_apartment: number;
@@ -63,8 +64,31 @@ const SetPrices = () => {
     newForm.append("season", formData.season);
 
     debugger;
-    await postPrice(newForm)(dispatch);
-    console.log("datos enviados a la base de datos, formData");
+    try {
+      // Realiza la solicitud y espera la respuesta
+      await postPrice(newForm)(dispatch);
+
+      // Muestra el SweetAlert si la solicitud fue exitosa
+      Swal.fire({
+        title: "Precio creado con éxito",
+        text: "Tu precio ha sido creado exitosamente.",
+        icon: "success",
+        timer: 4000,
+        showConfirmButton: false,
+      });
+      
+      // Reinicia el formulario o realiza otras acciones necesarias
+      setFormData({
+        id_apartment: 0,
+        title: "",
+        price_per_night_pesos: 0,
+        price_per_night_dolar: 0,
+        season: "media",
+      });
+    } catch (error) {
+      // Maneja el error en caso de que la solicitud falle
+      console.error("Error al crear el precio:", error);
+    }
   };
 
   return (

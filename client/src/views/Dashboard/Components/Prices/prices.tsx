@@ -25,9 +25,9 @@ const Prices = () => {
             <table className="w-full text-gray-700 text-sm uppercase">
               <thead>
                 <tr className="text-center">
-                  <th>Season</th>
-                  <th>Price (Pesos)</th>
-                  <th>Price (Dólar)</th>
+                  <th>Temporada</th>
+                  <th>Precio (Pesos)</th>
+                  <th>Precio (Dólar)</th>
                   <th>Editar</th>
                   <th>Eliminar</th>
                 </tr>
