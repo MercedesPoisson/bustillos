@@ -133,7 +133,8 @@ const RentsForm = () => {
     setActiveTab(tabName);
   };
 
-  const handlePostRent = async () => {
+  const handlePostRent = async (event: any) => {
+    event?.preventDefault();
     console.log("Form Data antes de enviar:", formData);
     const newForm = new FormData();
     newForm.append("name", formData.name);
