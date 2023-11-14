@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const AllRents = () => {
@@ -33,7 +33,7 @@ const AllRents = () => {
         dataTable.addRows(reservations);
 
         const options = {
-          colors: ["#EC7FD1", "#4E6793"],
+          colors: ["#EC7FD1", "#4E6793", "#C4D7F9"],
           timeline: {
             
             colorByRowLabel: true,
