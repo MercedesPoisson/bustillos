@@ -1,14 +1,39 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { State } from "../../../../redux/Types";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
+import deletePrice from "../../../../redux/actions/deletePrice";
+import { useState } from "react";
+import { Prices } from "../../../../redux/interfaces";
+import Swal from "sweetalert2";
 
-const Prices = () => {
+const AllPrices = () => {
   const prices = useSelector((state: State) => state.price);
   console.log(prices);
 
   const uniqueDepartments = Array.from(
     new Set(prices.map((price) => price.title))
   );
+
+  const [selectedPrice, setSelectedPrice] = useState<Prices | null>(null); // eslint-disable-line @typescript-eslint/no-unused-vars
+  const dispatch = useDispatch();
+
+  const openDeleteModal = (price: Prices) => {
+    setSelectedPrice(price);
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "No podrás recuperar este precio",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, borrar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deletePrice(price.id_price) as unknown as any);
+        Swal.fire("¡Precio borrado!", "Precio borrado con éxito.", "success");
+      }
+    });
+  };
+  
 
   return (
     <div className="w-1/2 p-4 font-Poppins ">
@@ -51,7 +76,7 @@ const Prices = () => {
                       <td className="text-center icon-cell">
                         <button
                           className="text-white bg-red-500 hover:bg-red-600 px-1 py-1 rounded ml-4"
-                          //   onClick={() => openDeleteModal(apartment)}
+                            onClick={() => openDeleteModal(price)}
                         >
                           <BiTrash className="text-xl" />
                         </button>
@@ -67,4 +92,4 @@ const Prices = () => {
   );
 };
 
-export default Prices;
+export default AllPrices;

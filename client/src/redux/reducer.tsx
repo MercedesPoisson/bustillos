@@ -12,6 +12,7 @@ import {
   DELETE_RENT,
   DELETE_APARTMENT,
   GET_PRICES,
+  DELETE_PRICE,
   POST_PRICE,
   POST_GUEST,
 } from "./actions/actionTypes";
@@ -63,6 +64,11 @@ const rootReducer: Reducer<State, Action> = (
       return { ...state, price: payload };
     case POST_PRICE:
       return { ...state };
+    case DELETE_PRICE:
+      const updatedPrices = state.price.filter(
+        (price) => price.id_price !== payload
+      );
+      return { ...state, price: updatedPrices };
     case POST_GUEST:
       return { ...state, guests: payload };
     default:

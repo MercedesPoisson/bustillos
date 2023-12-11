@@ -73,7 +73,7 @@ const SetPrices = () => {
         title: "Precio creado con éxito",
         text: "Tu precio ha sido creado exitosamente.",
         icon: "success",
-        timer: 4000,
+        timer: 6000,
         showConfirmButton: false,
       });
       
@@ -85,11 +85,31 @@ const SetPrices = () => {
         price_per_night_dolar: 0,
         season: "media",
       });
-    } catch (error) {
-      // Maneja el error en caso de que la solicitud falle
+    } catch (error: any) {
       console.error("Error al crear el precio:", error);
+    
+      // Verifica si el error tiene una propiedad de mensaje específica
+      if (error.response && error.response.data && error.response.data.error) {
+        // Muestra un mensaje de error específico
+        Swal.fire({
+          title: "Error al crear el precio",
+          text: error.response.data.error,
+          icon: "error",
+          timer: 4000,
+          showConfirmButton: false,
+        });
+      } else {
+        // Si el error no tiene un mensaje específico, muestra un mensaje genérico
+        Swal.fire({
+          title: "Error al crear el precio",
+          text: "Hubo un error al intentar crear el precio. Por favor, inténtalo nuevamente.",
+          icon: "error",
+          timer: 4000,
+          showConfirmButton: false,
+        });
+      }
     }
-  };
+  }
 
   return (
     <div className="w-1/2 p-4 font-Poppins ">
@@ -162,4 +182,5 @@ const SetPrices = () => {
     </div>
   );
 };
+
 export default SetPrices;

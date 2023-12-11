@@ -16,6 +16,8 @@ const postPrice = (formData: FormData) => {
             dispatch({ type: POST_PRICE, payload: response.data });
         } catch (error) {
             // Manejo de errores si es necesario
+            console.error("Error al Crear un precio",error);
+            throw error;
         }
     };
 };
