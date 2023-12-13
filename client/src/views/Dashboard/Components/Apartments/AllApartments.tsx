@@ -34,9 +34,9 @@ const AllApartments = () => {
 
     return (
         <div className="bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1">
-       <strong className="text-gray-700 font-medium">Departamentos</strong>
+       <strong className="text-midblue font-medium uppercase font-Poppins">Departamentos</strong>
        <div className="border-x border-gray-200 rounded-sm mt-3">
-         <table className="w-full text-gray-700 text-sm uppercase">
+         <table className="w-full text-gray-700 text-sm uppercase font-Poppins">
            <thead>
              <tr className="text-center">
                <th>ID</th>
@@ -76,7 +76,7 @@ const AllApartments = () => {
                 </td> */}
                 <td className="text-center icon-cell">
                     <button
-                    className="text-white bg-midblue hover:bg-blue px-1 py-1 rounded ml-4"
+                    className="text-white bg-edit hover:bg-blue px-1 py-1 rounded ml-4"
                     >
                         <BiEditAlt className="text-xl"  />
                     </button>
@@ -84,7 +84,7 @@ const AllApartments = () => {
                 </td>
                 <td className="text-center icon-cell">
                 <button
-                  className="text-white bg-red-500 hover:bg-red-600 px-1 py-1 rounded ml-4"
+                  className="text-white bg-tacho hover:bg-red-600 px-1 py-1 rounded ml-4"
                   onClick={() => openDeleteModal(apartment)}
                 >
                   <BiTrash className="text-xl" />

@@ -47,7 +47,9 @@ const AllRents = () => {
 
   return (
     <div>
-      <h1>Reservas</h1>
+      <h1 className="text-l text-midblue uppercase font-semibold font-Poppins mb-1">
+                calendario de reservas
+              </h1>
       <div id="timeline" style={{ height: '300px' }}></div>
     </div>
   );

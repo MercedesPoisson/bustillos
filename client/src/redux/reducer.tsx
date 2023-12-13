@@ -15,6 +15,7 @@ import {
   DELETE_PRICE,
   POST_PRICE,
   POST_GUEST,
+  GET_GUESTS,
 } from "./actions/actionTypes";
 
 const inictialState: State = {
@@ -70,6 +71,8 @@ const rootReducer: Reducer<State, Action> = (
       );
       return { ...state, price: updatedPrices };
     case POST_GUEST:
+      return { ...state, guests: payload };
+    case GET_GUESTS:
       return { ...state, guests: payload };
     default:
       return state;

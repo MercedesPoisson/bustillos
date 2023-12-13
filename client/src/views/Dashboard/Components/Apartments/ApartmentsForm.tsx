@@ -150,7 +150,7 @@ debugger
         <form onSubmit={handlePost}>
           <div className="flex h-screen justify-center w-full mx-4 sm:mx-auto ">
             <div className="w-1/2 p-4 font-Poppins ">
-              <h1 className="text-xl text-blue font-semibold font-Poppins mb-1">
+              <h1 className="text-l text-midblue uppercase font-semibold font-Poppins mb-1">
                 Crear Departamento
               </h1>
               <input
@@ -194,7 +194,7 @@ debugger
 
               <button
                 type="submit"
-                className="bg-blue hover:bg-lightblue text-white hover:text-midblue py-2 px-4 rounded"
+                className="bg-midblue hover:bg-lightblue text-lightblue hover:text-midblue py-2 px-4 rounded"
               >
                 Cargar
               </button>

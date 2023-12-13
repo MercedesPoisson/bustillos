@@ -113,9 +113,9 @@ const SetPrices = () => {
 
   return (
     <div className="w-1/2 p-4 font-Poppins ">
-      <h1 className="text-xl text-blue font-semibold font-Poppins mb-1">
-        Crear Precio
-      </h1>
+      <h1 className="text-l text-midblue uppercase font-semibold font-Poppins mb-1">
+                Crear precio
+              </h1>
       <form onSubmit={handlePostPrice}>
         <div>
           <label>Departamento:</label>
@@ -174,7 +174,7 @@ const SetPrices = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue hover:bg-lightblue text-white hover:text-midblue py-2 px-4 rounded"
+          className="bg-midblue hover:bg-lightblue font-Poppins text-white hover:text-midblue py-2 px-4 rounded"
         >
           Cargar
         </button>

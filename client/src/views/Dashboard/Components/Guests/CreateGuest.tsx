@@ -5,23 +5,49 @@ import { State } from "../../../../redux/Types";
 import FormPersonalData from "./Create/PersonalData";
 import axios from "axios";
 import { Guests } from "../../../../redux/Types";
+import getGuestByRentId from "../../../../redux/actions/getGuestByRentId";
+import { useEffect } from "react";
+import { BiEditAlt, BiTrash } from "react-icons/bi";
+import { useDispatch } from "react-redux";
 
 const CreateGuest = () => {
   const rents = useSelector((state: State) => state.rents);
+  const dispatch = useDispatch();
 
   const [guests, setGuests] = useState([
-    { pax_name: '', pax_surname: '', pax_dni: '', id_rent: 0 },
+    { pax_name: "", pax_surname: "", pax_dni: "", id_rent: 0 },
   ]);
 
-  const [selectedBookingNumber, setSelectedBookingNumber] = useState<string | null>(null);
+  const [selectedBookingNumber, setSelectedBookingNumber] = useState<
+    string | null
+  >(null);
 
   const [idRent, setIdRent] = useState<number>(0);
 
   const [activeTab, setActiveTab] = useState<number | null>(null);
+  const [showTable, setShowTable] = useState(false);
 
   const handleTabChange = (index: number) => {
     setActiveTab(index);
   };
+
+  useEffect(() => {
+    const fetchGuestsByRentId = async () => {
+      try {
+        const response = await getGuestByRentId(idRent, dispatch); // Pasa el despacho a la acción
+        setGuests(response.data);
+  
+        // Mostrar la tabla si hay huéspedes
+        setShowTable(response.data.length > 0);
+      } catch (error) {
+        console.error("Error al obtener los huéspedes:", error);
+      }
+    };
+  
+    if (idRent) {
+      fetchGuestsByRentId();
+    }
+  }, [idRent, dispatch]);
 
   const handleAddAccompanist = () => {
     if (guests.length < 7) {
@@ -33,18 +59,18 @@ const CreateGuest = () => {
   };
 
   const postGuests = async (guestData: Guests[]) => {
-      try {
-        console.log("Preparing to post...", guestData);
-        const response = await axios.post(`http://localhost:3001/guests/`, guestData
-          );
-        console.log("Datos enviados a la base de datos, formData", response.data );
-        
-      } catch (error) {
-        // Maneja el error aquí
-        console.error("Error posting guests:", error);
-      }
+    try {
+      console.log("Preparing to post...", guestData);
+      const response = await axios.post(
+        `http://localhost:3001/guests/`,
+        guestData
+      );
+      console.log("Datos enviados a la base de datos, formData", response.data);
+    } catch (error) {
+      // Maneja el error aquí
+      console.error("Error posting guests:", error);
+    }
   };
-
 
   const handlePostGuest = async (event: any) => {
     event.preventDefault();
@@ -52,19 +78,18 @@ const CreateGuest = () => {
     guests.forEach((guest) => {
       guest.id_rent = idRent;
     });
-      console.log("formData", guests);
+    console.log("formData", guests);
 
     const response = await postGuests(guests);
     return response;
-    }
-
-
+  };
 
   return (
     <div className="w-1/2 p-4 font-Poppins">
-      <h1 className="text-xl text-blue font-semibold font-Poppins mb-1">
-        Agregar Acompañantes
-      </h1>
+      <h1 className="text-l text-midblue uppercase font-semibold font-Poppins mb-1">
+                agregar acompañantes
+              </h1>
+
       <form onSubmit={handlePostGuest}>
         <div>
           <label>Número de Reserva</label>
@@ -72,11 +97,11 @@ const CreateGuest = () => {
             name="id_rent"
             value={selectedBookingNumber || ""}
             onChange={(e) => {
-                const selectedValue = e.target.value;
-                setSelectedBookingNumber(selectedValue);
-                // Convierte selectedValue en un número antes de asignarlo a idRent
-                setIdRent(parseInt(selectedValue, 10));
-              }}
+              const selectedValue = e.target.value;
+              setSelectedBookingNumber(selectedValue);
+              // Convierte selectedValue en un número antes de asignarlo a idRent
+              setIdRent(parseInt(selectedValue, 10));
+            }}
             className="block w-80 mb-2 p-2 border border-gray-300 rounded"
           >
             <option value="">Seleccionar</option>
@@ -87,13 +112,50 @@ const CreateGuest = () => {
             ))}
           </select>
         </div>
-        <ul className="flex text-base text-blue font-semibold font-Poppins cursor-pointer">
+        {showTable && (
+        <div>
+          <table className="w-full text-gray-700 text-sm uppercase">
+            <thead>
+              <tr className="text-center">
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {guests.map((guest, index) => (
+                <tr key={index} className="text-center hover:bg-lightblue">
+                  <td>{guest.pax_name}</td>
+                  <td>{guest.pax_surname}</td>
+                  <td>{guest.pax_dni}</td>
+                  <td className="text-center icon-cell">
+                    <button className="text-white bg-edit hover:bg-blue px-1 py-1 rounded ml-4">
+                      <BiEditAlt className="text-xl" />
+                    </button>
+                  </td>
+                  <td className="text-center icon-cell">
+                    <button
+                      className="text-white bg-tacho hover:bg-red-600 px-1 py-1 rounded ml-4"
+                      // onClick={() => openDeleteModal(apartment)}
+                    >
+                      <BiTrash className="text-xl" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        )}
+        <ul className="flex text-base text-midblue font-semibold font-Poppins cursor-pointer">
           {guests.map((_, index) => (
             <li
               className={`mr-4 p-2 ${
                 activeTab === index
-                  ? "active bg-blue text-lightblue border rounded-lg"
-                  : "hover:text-lightblue"
+                  ? "active bg-midblue text-lightblue border rounded-lg"
+                  : "hover:text-blue"
               }`}
               onClick={() => handleTabChange(index)}
             >
@@ -108,8 +170,8 @@ const CreateGuest = () => {
           <div key={index}>
             {activeTab === index && (
               <FormPersonalData
-              key={index}
-            //   index={index}
+                key={index}
+                //   index={index}
                 guests={data}
                 setFormData={(updatedData) => {
                   setGuests((prevData) => {
@@ -127,7 +189,7 @@ const CreateGuest = () => {
         ))}
         <button
           type="submit"
-          className="bg-blue hover-bg-lightblue text-white hover-text-midblue py-2 px-4 rounded"
+          className="bg-midblue hover:bg-lightblue font-Poppins text-l text-white hover:text-midblue py-2 px-4 rounded"
         >
           Cargar
         </button>
@@ -137,21 +199,6 @@ const CreateGuest = () => {
 };
 
 export default CreateGuest;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";

@@ -187,12 +187,15 @@ const RentsForm = () => {
   return (
     <div>
       <form onSubmit={handlePostRent}>
+      <h1 className="text-l text-midblue uppercase font-semibold font-Poppins mb-1">
+                Crear reserva
+              </h1>
         <ul className="flex text-base text-blue font-semibold font-Poppins cursor-pointer">
           <li
             className={`mr-4 p-2 ${
               activeTab === "whoRents"
-                ? "active bg-blue text-lightblue border rounded-lg"
-                : "hover:text-lightblue"
+                ? "active bg-midblue text-lightblue border rounded-lg"
+                : "hover:text-midblue"
             }`}
             onClick={() => handleTabChange("whoRents")}
           >
@@ -201,8 +204,8 @@ const RentsForm = () => {
           <li
             className={`mr-4  p-2 ${
               activeTab === "manyRent"
-                ? "active bg-blue text-lightblue border rounded-lg"
-                : "hover:text-lightblue"
+              ? "active bg-midblue text-lightblue border rounded-lg"
+              : "hover:text-midblue"
             }`}
             onClick={() => handleTabChange("manyRent")}
           >
@@ -211,8 +214,8 @@ const RentsForm = () => {
           <li
             className={`mr-4 p-2 ${
               activeTab === "whereRent"
-                ? "active bg-blue text-lightblue border rounded-lg"
-                : "hover:text-lightblue"
+              ? "active bg-midblue text-lightblue border rounded-lg"
+              : "hover:text-midblue"
             }`}
             onClick={() => handleTabChange("whereRent")}
           >
@@ -222,8 +225,8 @@ const RentsForm = () => {
           <li
             className={`mr-4 p-2 ${
               activeTab === "whenRent"
-                ? "active bg-blue text-lightblue border rounded-lg"
-                : "hover:text-lightblue"
+              ? "active bg-midblue text-lightblue border rounded-lg"
+              : "hover:text-midblue"
             }`}
             onClick={() => handleTabChange("whenRent")}
           >
@@ -233,8 +236,8 @@ const RentsForm = () => {
           <li
             className={`mr-4 p-2 ${
               activeTab === "source"
-                ? "active bg-blue text-lightblue border rounded-lg"
-                : "hover:text-lightblue"
+              ? "active bg-midblue text-lightblue border rounded-lg"
+              : "hover:text-midblue"
             }`}
             onClick={() => handleTabChange("source")}
           >
@@ -244,8 +247,8 @@ const RentsForm = () => {
           <li
             className={`mr-4 p-2 ${
                 activeTab === "price"
-                  ? "active bg-blue text-lightblue border rounded-lg"
-                  : "hover:text-lightblue"
+                ? "active bg-midblue text-lightblue border rounded-lg"
+                : "hover:text-midblue"
               }`}
             onClick={() => handleTabChange("price")}
           >
@@ -255,8 +258,8 @@ const RentsForm = () => {
           <li
             className={`mr-4 p-2 ${
               activeTab === "armado"
-                ? "active bg-blue text-lightblue border rounded-lg"
-                : "hover:text-lightblue"
+              ? "active bg-midblue text-lightblue border rounded-lg"
+              : "hover:text-midblue"
             }`}
             onClick={() => handleTabChange("armado")}
           >
@@ -350,7 +353,7 @@ const RentsForm = () => {
         /> */}
         <button
           type="submit"
-          className="bg-blue hover:bg-lightblue text-white hover:text-midblue py-2 px-4 rounded"
+          className="font-Poppins bg-midblue hover:bg-lightblue text-white hover:text-midblue py-2 px-4 rounded"
         >
           Cargar
         </button>
