@@ -27,7 +27,7 @@ function Home() {
         <img src={image} alt="Hotel" width={400} height={300} />
       </div>
       <div className="w-1/2 p-4 font-Poppins">
-        <h1 className="text-3xl text-blue font-semibold ">Bienvenida!</h1>
+        <h1 className="text-3xl text-midblue font-semibold ">Bienvenida!</h1>
         <h1 className="text-sm">Estas por ingresar al admin de Bustillo 7500. </h1>
         <h1  className="text-sm">Por favor iniciá sesión</h1>
         <form onSubmit={handleSubmit}>
@@ -48,7 +48,7 @@ function Home() {
           />
           <button
             type="submit"
-            className="bg-blue hover:bg-lightblue text-white hover:text-midblue py-2 px-4 rounded"
+            className="bg-midblue font-Poppins hover:bg-lightblue text-white hover:text-midblue py-2 px-4 rounded"
           >
             Iniciar Sesión
           </button>

@@ -1,7 +1,8 @@
 const Dashboard = () => {
     return(
         <div>
-            aca es donde renderizo todas las pantallas, es el index
+            Bienvenidos a Bustillos 7500.
+            Aca se visualiza un resumen de las distintas secciones
         </div>
     )
 }
